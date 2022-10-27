@@ -1,7 +1,8 @@
 <html>
-<head>
-    <title>Hello World</title>
-</head>
+    <head>
+        <title>Hello World</title>
+        <?php include('includes/head.inc.php') ?>
+    </head>
 
 <body>
 <?php
