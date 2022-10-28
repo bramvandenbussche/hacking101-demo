@@ -3,6 +3,8 @@ version: '3'
 services:
   db:
     image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=abc123
     volumes:
       - ./sql/init.sql:/data/application/sql/init.sql
     command: --init-file /data/application/sql/init.sql
