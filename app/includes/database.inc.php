@@ -8,7 +8,8 @@ $db_conn = mysqli_connect($sqlserver, $sqluser, $sqlpass, $sqldb) or die("Connec
 
 function DbSearch($conn, $keyword) {
     $query = "SELECT id, title, article FROM articles WHERE id > 0 AND article LIKE '%$keyword%'";
-
+    echo '<p>Executing Query: ' . $query . '</p>';
+    return $conn->query($query);
 }
 
 ?>
