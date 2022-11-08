@@ -4,6 +4,18 @@ GRANT ALL PRIVILEGES ON *.* TO 'fqsqsfqsdfqsfqef'@'%' IDENTIFIED BY 'fqsdj56153m
 FLUSH PRIVILEGES;
 USE test_db;
 
+CREATE TABLE users (
+    id          int,
+    description varchar(80),
+    username    varchar(100),
+    password    varchar(100),
+    isAdmin     int
+);
+
+insert into users(id, description, username, password, isAdmin) VALUES
+    (1, 'Mega Admin', 'Bram Smith', 'ThisIsAnInvalidMD5HashAndSoItIsUnCrackable-No-https://crackstation.net/-ForYou', 1),
+    (2, 'Normal User', 'John Doe', '2c103f2c4ed1e59c0b4e2e01821770fa', 0);
+
 CREATE TABLE articles (
     id          int,
     title       varchar(100),
