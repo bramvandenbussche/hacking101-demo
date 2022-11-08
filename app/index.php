@@ -6,6 +6,7 @@
     </head>
 
     <body>
+        <!-- TODO: We need to add a link to login.php somewhere -->
         <div class="container">
 
             <div class="jumbotron">
