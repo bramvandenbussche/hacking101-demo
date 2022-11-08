@@ -174,7 +174,7 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <p>
             then an attacker can submit the input:
         </p>
-        <pre><code>' UNION SELECT username, password FROM users--</code></pre>
+        <pre><code>' UNION SELECT username, password FROM users -- -</code></pre>
         <p>
             This will cause the application to return all usernames and passwords along with the names and descriptions of products.
         </p>

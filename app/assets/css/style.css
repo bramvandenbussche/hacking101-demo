@@ -1,13 +1,13 @@
 
 code {
     background: #444;
-    color: #ffcc00;
+    color: #ddd;
     padding: 1px 4px;
     border-radius: 5px;
 }
 
 pre code {
-    color: #ffcc00;
+    color: #ddd;
     padding: 5px 10px;
     display: block;
 }

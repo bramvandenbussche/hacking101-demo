@@ -10,7 +10,7 @@
 
             <?php include('includes/menu.inc.php') ?>
 
-            <h3>The most advanced search thing in the world!</h3>
+            <h1>The most advanced search thing in the world!</h1>
 
             <form method="get">
             <?php
@@ -26,11 +26,19 @@
 
             <?php
             if (isset($_GET['search'])) {
-                echo '<table><th>Title</th><th>Article</th>';
-                $results = DbSearch($db_conn, $theValue);
+
+                $keyword = $_GET['search'];
+                $query = "SELECT id, title, excerpt FROM articles WHERE id > 0 AND article LIKE '%$keyword%'";
+
+                echo '<p>[DEBUG] Executing query: <pre><code>' . $query . '</code></pre></p>';
+
+                echo '<h2>Search results</h2>';                
+                echo '<table class="table table-striped"><th>Title</th><th>Excerpt</th>';
+                
+                $results = $db_conn->query($query);
                 while($row = $results->fetch_assoc()) {
 
-                    echo "<tr><td>".$row['title']."</td><td>".$row['article']."</td></tr>";
+                    echo "<tr><td width='25%'><a href='/article.php?id=" . $row['id'] . "'>".$row['title']."</a></td><td>".$row['excerpt']."</td></tr>";
 
                 }
                 echo '</table>';
