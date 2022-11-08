@@ -18,7 +18,7 @@ if (isset($_POST['username'])) {
         setcookie("user_username", $user['username']);
         setcookie("user_password", $user['password']);
         setcookie("user_isAdmin", $user['isAdmin']);
-        echo '<!-- Welcome esteemed guest, Please do not tamper with cookies to get to admin! -->';
+
     } else {
         echo '<h1>WRONG LOGIN!!!! You HAX0R!</h1>';
     }
@@ -52,6 +52,7 @@ if (isset($_POST['username'])) {
             echo $token;
             ?>}</p>
     <?php } else { ?>
+        <!-- Welcome esteemed guest, Please do not tamper with cookies to get to admin! -->
         <p>You are not admin, so there is not that much too see here.</p>
         <p>Did you know that the cookie monster made it first appearance in 1966? We all love Cookies!</p>
     <?php } ?>
