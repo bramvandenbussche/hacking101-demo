@@ -75,5 +75,7 @@ if (isset($_POST['username'])) {
         <?php } ?>
     <?php } ?>
     </div>
+
+    <?php include('includes/footer.inc.php') ?>
 </body>
 </html>
