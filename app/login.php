@@ -46,6 +46,11 @@ if (isset($_POST['username'])) {
     <h3>Welcome <?=$_COOKIE["user_description"] ?></h3>
     <?php if ($_COOKIE["user_isAdmin"] == "1") { ?>
         <p>You made it to admin! Hooray!</p>
+        <p>You can gloat about it with using this token: H101{<?php
+            $date = date(DATE_ATOM);
+            $token = base64_encode("$date|".md5($date));
+            echo $token;
+            ?>}</p>
     <?php } else { ?>
         <p>You are not admin, so there is not that much too see here.</p>
         <p>Did you know that the cookie monster made it first appearance in 1966? We all love Cookies!</p>
