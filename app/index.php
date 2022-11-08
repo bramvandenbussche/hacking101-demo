@@ -9,6 +9,8 @@
         <!-- TODO: We need to add a link to login.php somewhere -->
         <div class="container">
 
+        <?php include('includes/menu.inc.php') ?>
+
             <div class="jumbotron">
                 <h1>All Secure!</h1>
                 <p>A very secure blog</p>
@@ -32,7 +34,9 @@
                 ?>
                     <div class="col-sm-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="/assets/thumbnails/<?= $row['thumbnail'] ?>" class="card-img-top" alt="<?= $row['title'] ?>">
+                            <a href="/article.php?id=<?= $row['id'] ?>">
+                                <img src="/assets/thumbnails/<?= $row['thumbnail'] ?>" class="card-img-top" alt="<?= $row['title'] ?>">
+                            </a>
                             <div class="card-body">
                                 <h5 class="card-title"><?= $row['title'] ?></h5>
                                 <p class="card-text"><?= $row['excerpt'] ?></p>

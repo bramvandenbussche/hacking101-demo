@@ -163,4 +163,7 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <p>
             The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since <code>1=1</code> is always true, the query will return all items.
         </p>
-    ");
+    "),
+(3, "Cookie manipulation", "cookie.jpg", 
+    "Cookie manipulation excerpt",
+    "You can change cookies using the browser developer tools, if the backend trusts the cookie to be true, this can be abused by an attacker");
