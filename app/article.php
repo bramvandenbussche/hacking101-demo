@@ -28,7 +28,7 @@
                 <div class="jumbotron">
                     <h1 class="display-4"><?= $row['title'] ?></h1>
                     <p class="lead"><?= $row['excerpt'] ?></p>
-                    <img src="/assets/thumbnails/<?= $row['thumbnail'] ?>" alt="<?= $row['title'] ?>" />
+                    <img src="/assets/thumbnails/<?= $row['thumbnail'] ?>" alt="<?= $row['title'] ?>" class="img-fluid" />
                 </div>
                 <article>
                     <?= $row['article'] ?>            
