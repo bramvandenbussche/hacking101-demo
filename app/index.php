@@ -13,10 +13,10 @@
                 <p>A very secure blog</p>
                 <p><a class="btn btn-primary btn-lg" href="https://www.infinitaslearning.com/" traget="_blank" role="button">Learn more</a></p>
             </div>
-            <center>
-                <h1>All Secure</h1>
-                
-            </center>
+
+            <div class="row">
+                <h2>Recent articles</h2>
+            </div>
 
             <div class="row">                
                 <?php
