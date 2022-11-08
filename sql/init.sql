@@ -34,7 +34,7 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
 
     <p>So let’s talk about why your website should have a search bar and a fun way to display that search bar on your website.</p>
 
-    <p>// TODO Bram: Search page proved to be unsafe and has been taken offline for the time being</p>
+    <p>// TODO Bram: Search page proved to be unsafe and has been <a href='search_disabled_because_hack.php'>taken offline</a> for the time being</p>
     "),
 (1, "IDOR is holding the door", "idor.jpg",
     "IDOR is short 'for Insecure direct object references'",    
@@ -162,6 +162,21 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <pre><code>SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1</code></pre>
         <p>
             The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since <code>1=1</code> is always true, the query will return all items.
+        </p>
+        <h2>Retrieving data from other database tables</h2>
+        <p>
+            In cases where the results of an SQL query are returned within the application's responses, an attacker can leverage an SQL injection vulnerability to retrieve data from other tables within the database. This is done using the <code>UNION</code> keyword, which lets you execute an additional <code>SELECT</code> query and append the results to the original query.
+        </p>
+        <p>
+            For example, if an application executes the following query containing the user input 'Gifts':
+        </p>
+        <pre><code>SELECT name, description FROM products WHERE category = 'Gifts'</code></pre>
+        <p>
+            then an attacker can submit the input:
+        </p>
+        <pre><code>' UNION SELECT username, password FROM users--</code></pre>
+        <p>
+            This will cause the application to return all usernames and passwords along with the names and descriptions of products.
         </p>
     "),
 (3, "Cookie manipulation", "cookie.jpg", 
