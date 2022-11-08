@@ -25,11 +25,20 @@ CREATE TABLE articles (
 );
 
 INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
-(1, "IDOR is holding the door", "idor.jpg",
-    " Insecure direct object references (IDOR) are a type of access control vulnerability that arises when an 
-        application uses user-supplied input to access objects directly.",    
+(-1, "Search functionality is a must", "search.jpg",
+    "Any decent blog should have a search function",
     "
-        <p>IDOR is short 'for Insecure direct object references'.</p>
+    <p>You’ve been there…you’re on a website, you can’t find what you need and there’s no search bar. 
+    It’s very annoying and most likely, you’re quickly on your way back to Google to find another site within a few seconds. 
+    Whether you’re a nonprofit or a small business, your website needs a search bar.</p>
+
+    <p>So let’s talk about why your website should have a search bar and a fun way to display that search bar on your website.</p>
+
+    <p>// TODO Bram: Search page proved to be unsafe and has been taken offline for the time being</p>
+    "),
+(1, "IDOR is holding the door", "idor.jpg",
+    "IDOR is short 'for Insecure direct object references'",    
+    "
         <p>
             Insecure direct object references (IDOR) are a type of access control vulnerability that arises when an 
             application uses user-supplied input to access objects directly. 
@@ -46,7 +55,7 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <p>
             Consider a website that uses the following URL to access the customer account page, by retrieving information from the back-end database:
         </p>
-        <code>https://insecure-website.com/customer_account?customer_number=132355</code>
+        <pre><code>https://insecure-website.com/customer_account?customer_number=132355</code></pre>
         <p>
             Here, the customer number is used directly as a record index in queries that are performed on the back-end database.
             If no other controls are in place, an attacker can simply modify the <code>customer_number</code> value, 
@@ -64,7 +73,7 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
             For example, a website might save chat message transcripts to disk using an incrementing filename, 
             and allow users to retrieve these by visiting a URL like the following:
         </p>
-        <code>https://insecure-website.com/static/12144.txt</code>
+        <pre><code>https://insecure-website.com/static/12144.txt</code></pre>
         <p>
             In this situation, an attacker can simply modify the filename to retrieve a transcript created by another user
             and potentially obtain user credentials and other sensitive data.
@@ -107,11 +116,11 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <p>
             Consider a shopping application that displays products in different categories. When the user clicks on the Gifts category, their browser requests the URL:
         </p>
-        <code>https://insecure-website.com/products?category=Gifts</code>
+        <pre><code>https://insecure-website.com/products?category=Gifts</code></pre>
         <p>
             This causes the application to make an SQL query to retrieve details of the relevant products from the database:
         </p>
-        <code>SELECT * FROM products WHERE category = 'Gifts' AND released = 1</code>
+        <pre><code>SELECT * FROM products WHERE category = 'Gifts' AND released = 1</code></pre>
         <p>
             This SQL query asks the database to return:
         </p>
@@ -135,22 +144,22 @@ INSERT INTO articles (id, title, thumbnail, excerpt, article) VALUES
         <p>
             The application doesn't implement any defenses against SQL injection attacks, so an attacker can construct an attack like:
         </p>
-        <code>https://insecure-website.com/products?category=Gifts'--</code>
+        <pre><code>https://insecure-website.com/products?category=Gifts'--</code></pre>
         <p>
             This results in the SQL query:
         </p>
-        <code>SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1</code>
+        <pre><code>SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1</code></pre>
         <p>
             The key thing here is that the double-dash sequence <code>--</code> is a comment indicator in SQL, and means that the rest of the query is interpreted as a comment. This effectively removes the remainder of the query, so it no longer includes <code>AND released = 1</code>. This means that all products are displayed, including unreleased products.
         </p>
         <p>
             Going further, an attacker can cause the application to display all the products in any category, including categories that they don't know about:
         </p>
-        <code>https://insecure-website.com/products?category=Gifts'+OR+1=1--</code>
+        <pre><code>https://insecure-website.com/products?category=Gifts'+OR+1=1--</code></pre>
         <p>
             This results in the SQL query:
         </p>
-        <code>SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1</code>
+        <pre><code>SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1</code></pre>
         <p>
             The modified query will return all items where either the category is Gifts, or 1 is equal to 1. Since <code>1=1</code> is always true, the query will return all items.
         </p>
